@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story List</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="protected.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>Story List</h1>
+        <nav>
+            <a href="new_story.html">Create New Story</a>
+            <a href="logout.html">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>All Stories</h2>
+            <ul>
+                <!-- Loop through stories dynamically -->
+                {% for story in stories %}
+                <li>
+                    <a href="/stories/{{ story.id }}">{{ story.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

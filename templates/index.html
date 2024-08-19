@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Story Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="protected.js"></script>
+<script>
+fetch('/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email: email,  // Replace with the actual form data
+        password: password  // Replace with the actual form data
+    })
+})
+.then(response => response.json())
+.then(data => {
+    if (data.access_token) {
+        // Store the token in localStorage
+        localStorage.setItem('access_token', data.access_token);
+        // Redirect to home page or another page
+        window.location.href = '/home';
+    } else {
+        alert('Login failed');
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+	
+
+</script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Collaborative Story Creator</h1>
+        <nav>
+            <a href="/stories">View Stories</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Create and contribute to amazing stories with others!</h2>
+            <p>Sign up, log in, and start your creative journey by contributing to ongoing stories or creating your own.</p>
+            <a href="/create-stories" class="cta-button">Get Started</a>
+        </section>
+    </main>
+</body>
+<style>
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling for the body */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffdfd4;
+}
+
+/* Main section styling */
+main {
+    padding: 3rem;
+    text-align: center;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+}
+
+main h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+}
+
+main p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Call-to-action button */
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #ff6f61;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff867f;
+    transform: translateY(-3px);
+}
+
+/* Section styling */
+.intro {
+    padding: 2rem;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgb(115, 236, 236);
+}
+</style>
+
+</html>
